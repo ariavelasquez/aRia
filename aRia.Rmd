@@ -1,10 +1,10 @@
 ---
-title: "aRia"
-author: "Aria Velasquez"
-date: "2024-03-26"
-output: html_document
-editor_options: 
-  chunk_output_type: console
+  title: "aRia"
+  author: "Aria Velasquez"
+  date: "2024-03-26"
+  output: html_document
+  editor_options:
+    chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
@@ -13,52 +13,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
 ```{r}
 ### Load your libraries.
 library(tidyverse)
 ```
 ```{r}
-### Load csv file
+### Load your CSV files.
 read_csv("NYPD Arrest Data (2020 YTD Oct. 30).csv")
 ```
 ```{r}
-### Not sure why I did this since dplyr was alrady loaded? But I was following some steps I found on Stack Overflow.
-library(dplyr)
+### Create a new dataframe so that the alterations have somewehre to go.
+nypd_2020_test_sheet <- "NYPD Arrest Data (2020 YTD Oct. 30).csv"
 ```
 ```{r}
-### Create a new dataframe so that the alterations have somewhere to go. But why isn't it showing up in the environment page?
-.nypd_2020_test_sheet <- "NYPD Arrest Data (2020 YTD Oct. 30).csv"
-
-### THE FOLLOWING CODE DID NOT WORK WHICH IS WHY I COMMENTED IT OUT
-### select(.nypd_2020_test_sheet, -c(1,15,16,17,18,19))
+### Advice from Charles Minshew on formatting:
+nypd_2020_test_sheet %>%
+select(-ARREST_KEY, -X_COORD_CD, -Y_COORD_CD, -Latitude, -Longitude -`New Georeferenced Column`)
+### I don't know why it didn't work.
 ```
-```{r}
-### Dropping columns by their number/position didn't work, so now I'm going to try removing them by name.
-select(.nypd_2020_test_sheet, -c("ARREST_KEY","X_COORD_CD","Y_COORD_CD","Latitude","Longitude","New Georeferenced Column"))
-### The code directly above this didn't work either. Trying again in a new chunk.
-```
-```{r}
-### Why aren't any of my outputs showing up in the Environment window?
-```
-
 
 
 
