@@ -51,8 +51,14 @@ library(dplyr)
 ### select(.nypd_2020_test_sheet, -c(1,15,16,17,18,19))
 ```
 ```{r}
-
+### Dropping columns by their number/position didn't work, so now I'm going to try removing them by name.
+select(.nypd_2020_test_sheet, -c("ARREST_KEY","X_COORD_CD","Y_COORD_CD","Latitude","Longitude","New Georeferenced Column"))
+### The code directly above this didn't work either. Trying again in a new chunk.
 ```
+```{r}
+### Why aren't any of my outputs showing up in the Environment window?
+```
+
 
 
 
